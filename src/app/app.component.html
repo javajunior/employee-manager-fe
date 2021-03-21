@@ -19,7 +19,19 @@
         >
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0"></form>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        type="search"
+        (ngModelChange)="searchEmployees(key.value)"
+        #key="ngModel"
+        ngModel
+        name="key"
+        id="searchName"
+        class="form-control mr-sm-2"
+        placeholder="Search employees..."
+        required
+      />
+    </form>
   </div>
 </nav>
 <div class="container" id="main-container">
@@ -42,11 +54,10 @@
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <i class="fa fa-envelope float-right"></i>Email :
-            <a href="#">{{ employee?.email }}</a>
+            <i class="fa fa-envelope float-right"></i>{{ employee?.email }}
           </li>
           <li class="list-group-item">
-            <i class="fa fa-phone float-right"></i>Phone :{{ employee?.phone }}
+            <i class="fa fa-phone float-right"></i>Phone : {{ employee?.phone }}
           </li>
         </ul>
         <div class="card-body">
@@ -55,7 +66,6 @@
               (click)="onOpenModal(employee, 'edit')"
               class="btn btn-primary tooltips"
               data-placement="top"
-              data-toggle="tooltip"
               data-original-title="Edit"
               ><i class="fa fa-pencil"></i>
             </a>
@@ -63,7 +73,6 @@
               (click)="onOpenModal(employee, 'delete')"
               class="btn btn-secondary tooltips"
               data-placement="top"
-              data-toggle="tooltip"
               data-original-title="Delete"
               ><i class="fa fa-times"></i
             ></a>
@@ -159,9 +168,8 @@
             </div>
             <div class="modal-footer">
               <button
-                id="add-employee-form"
                 type="button"
-                id="  loyee-form"
+                id="add-employee-form"
                 class="btn btn-secondary"
                 data-dismiss="modal"
               >
